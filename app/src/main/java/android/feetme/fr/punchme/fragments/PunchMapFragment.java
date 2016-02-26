@@ -32,8 +32,6 @@ public class PunchMapFragment extends ServiceFragment {
         View view = inflater.inflate(R.layout.fragment_punch_map, container, false);
 
 
-
-        setHasOptionsMenu(true);
         return view;
     }
 

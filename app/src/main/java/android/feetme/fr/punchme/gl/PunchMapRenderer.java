@@ -15,7 +15,7 @@ public class PunchMapRenderer implements GLSurfaceView.Renderer {
 
     /**
      * Is false when the heatmap must not be drawn. True when the heatmap must be drawn.
-     * When it is true, mInsole must not be null.
+     * When it is true, mglove must not be null.
      */
     private boolean isDrawing = false;
 
