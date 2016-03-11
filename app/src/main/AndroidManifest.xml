@@ -27,7 +27,7 @@
         </activity>
 
         <activity android:name=".activities.ScanActivity"
-            android:label="Gloves' manager"
+            android:label="Gloves"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 

@@ -8,6 +8,7 @@ import android.feetme.fr.punchme.service.IMainServiceManager;
 import android.feetme.fr.punchme.service.MainService;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 /**
  * Created by Anas on 19/02/2016.
@@ -61,7 +62,7 @@ public class ServiceActivity extends AppCompatActivity {
     }
 
     protected Intent newServiceIntent() {
-        return new Intent(this, MainActivity.class);
+        return new Intent(this, MainService.class);
     }
 
 }

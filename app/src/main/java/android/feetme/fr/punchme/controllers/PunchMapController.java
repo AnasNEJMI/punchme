@@ -1,6 +1,6 @@
 package android.feetme.fr.punchme.controllers;
 
-import android.feetme.fr.punchme.Glove;
+import android.feetme.fr.punchme.dao.Glove;
 import android.feetme.fr.punchme.gl.PunchMapRenderer;
 import android.feetme.fr.punchme.gl.PunchMapView;
 import android.support.annotation.Nullable;

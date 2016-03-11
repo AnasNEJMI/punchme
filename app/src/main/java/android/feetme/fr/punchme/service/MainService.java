@@ -172,6 +172,21 @@ public class MainService extends Service implements IMainServiceManager{
     }
 
     @Override
+    public void updateGlove(Glove glove, int side){
+        Log.d(TAG, "update glove");
+        boolean restartConnectionAfterUpdate = isConnectionStarted;
+        stopConnection();
+
+        if(side == GloveFactory.SIDE_LEFT){
+            mGloveLeft = glove;
+        }else{
+            mGloveRight = glove;
+        }
+
+        if(restartConnectionAfterUpdate) startConnection();
+    }
+
+    @Override
     public Glove getGlove(int side) {
         if(side == GloveFactory.SIDE_LEFT){ return mGloveLeft; }
         else{ return mGloveRight; }

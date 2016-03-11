@@ -71,12 +71,15 @@ public class PreferenceUtils {
             DaoSession daoSession = access.openSession();
             GloveDao dao = daoSession.getGloveDao();
 
-            List<Glove> insoles = dao.queryBuilder()
+            List<Glove> gloves = dao.queryBuilder()
                     .where(GloveDao.Properties.Address.eq(glove.getAddress()))
                     .list();
 
-            dao.insert(glove);
-
+            if(gloves.size() > 0){
+                glove = gloves.get(0);
+            }else{
+                dao.insert(glove);
+            }
             access.closeSession();
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

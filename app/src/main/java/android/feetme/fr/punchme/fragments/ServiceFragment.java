@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.feetme.fr.punchme.activities.MainActivity;
+import android.feetme.fr.punchme.activities.ScanActivity;
 import android.feetme.fr.punchme.service.IMainServiceManager;
 import android.feetme.fr.punchme.service.MainService;
 import android.os.IBinder;
@@ -62,7 +63,7 @@ public abstract class ServiceFragment extends Fragment {
     }
 
     private Intent newServiceIntent() {
-        return new Intent(getActivity(), MainActivity.class);
+        return new Intent(getActivity(), ScanActivity.class);
     }
 
 }

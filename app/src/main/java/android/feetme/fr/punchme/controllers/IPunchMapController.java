@@ -1,6 +1,7 @@
 package android.feetme.fr.punchme.controllers;
 
-import android.feetme.fr.punchme.Glove;
+
+import android.feetme.fr.punchme.dao.Glove;
 
 /**
  * Created by Anas on 19/02/2016.

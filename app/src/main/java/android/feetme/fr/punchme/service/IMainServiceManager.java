@@ -35,6 +35,15 @@ public interface IMainServiceManager {
     boolean isConnected(int side);
 
     /**
+     * Update default glove, to which the service will connect when connection is started.
+     * If the provided glove is null, unsets the glove for the provided side.
+     *
+     * @param glove the glove to update
+     * @param side left or right
+     */
+    void updateGlove(Glove glove, int side);
+
+    /**
      * Returns the default glove to which the service will connect when connection is started.
      * @return the requested default glove object
      */

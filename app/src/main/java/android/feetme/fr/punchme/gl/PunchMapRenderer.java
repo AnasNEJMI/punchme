@@ -1,6 +1,6 @@
 package android.feetme.fr.punchme.gl;
 
-import android.feetme.fr.punchme.Glove;
+import android.feetme.fr.punchme.dao.Glove;
 import android.opengl.GLSurfaceView;
 
 import javax.microedition.khronos.egl.EGLConfig;

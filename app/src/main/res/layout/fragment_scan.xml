@@ -1,15 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/strut"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"/>
+
+    <ListView
+        android:id="@+id/insole_left_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/strut"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="true">
+
+    </ListView>
+
+    <ListView
+        android:id="@+id/insole_right_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/strut"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="true">
+
+    </ListView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/button_show_scan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_search"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="@dimen/fab_margin"/>
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_search"
+        app:fabSize="normal"
+        android:layout_centerHorizontal="true"
+        />
 
+    <LinearLayout
+        android:id="@+id/scan_frame"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_alignParentBottom="true"
+        android:translationY="450dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/scan_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/big_fab_size"
+            android:orientation="horizontal"
+            android:background="@drawable/select_item_transparent"
+            >
+
+            <ImageButton
+                android:id="@+id/dismiss_btn_ic"
+                android:layout_width="@dimen/small_fab_size"
+                android:layout_height="@dimen/small_fab_size"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:src="@drawable/vector_drawable_close"
+                android:tint="@color/colorPrimary"
+                android:background="@drawable/select_round_transparent"/>
+
+            <TextView
+                android:id="@+id/scan_btn_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/insoles"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_big_size"
+                android:gravity="center"/>
+
+            <ImageView
+                android:id="@+id/scan_btn_ic"
+                android:layout_width="@dimen/small_fab_size"
+                android:layout_height="@dimen/small_fab_size"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/vector_drawable_refresh"
+                android:tint="@color/colorPrimary"
+                android:background="@drawable/select_round_transparent"
+                android:layout_marginRight="@dimen/activity_vertical_margin"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/separator_4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"/>
+
+        <ListView
+            android:id="@+id/scan_list_0"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="5dp">
+
+        </ListView>
+    </LinearLayout>
 </RelativeLayout>
