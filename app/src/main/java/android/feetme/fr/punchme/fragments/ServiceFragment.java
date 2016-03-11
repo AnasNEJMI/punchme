@@ -63,7 +63,7 @@ public abstract class ServiceFragment extends Fragment {
     }
 
     private Intent newServiceIntent() {
-        return new Intent(getActivity(), ScanActivity.class);
+        return new Intent(getActivity(), MainService.class);
     }
 
 }

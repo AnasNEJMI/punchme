@@ -10,6 +10,7 @@ import android.feetme.fr.punchme.controllers.IPunchMapController;
 import android.feetme.fr.punchme.managers.IGloveManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,14 @@ public class PunchMapFragment extends ServiceFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_punch_map, container, false);
+
+        FloatingActionButton connectionBtn = (FloatingActionButton) view.findViewById(R.id.connect_to_glove);
+        connectionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
         return view;

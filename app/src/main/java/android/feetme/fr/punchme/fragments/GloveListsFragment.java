@@ -18,6 +18,7 @@ import android.feetme.fr.punchme.utils.PreferenceUtils;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,34 +36,34 @@ public abstract class GloveListsFragment extends ServiceFragment {
     private static final int REQUEST_ENABLE_BT = 1;
 
     protected ListView mLeftListView;
-        protected ListView mRightListView;
-        protected GloveAdapter mAdapterLeft;
-        protected GloveAdapter mAdapterRight;
+    protected ListView mRightListView;
+    protected GloveAdapter mAdapterLeft;
+    protected GloveAdapter mAdapterRight;
 
-        protected boolean registered = false;
+    protected boolean registered = false;
 
-        public interface Listener{
-            void onInsoleClick(long insoleId);
-        }
+    public interface Listener{
+        void onInsoleClick(long insoleId);
+    }
 
-        private Listener mListener;
+    private Listener mListener;
 
-        protected BroadcastReceiver mInsoleReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
+    protected BroadcastReceiver mInsoleReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
 
-                if(action.equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED)){
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    int bondState = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, 0);
-                    int previousBondState = intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, 0);
-                    onBondStateChanged(device, bondState, previousBondState);
-                }if(action.equals(IGloveManager.ACTION_BT_CONNECTION) ||
-                        action.equals(IGloveManager.ACTION_BT_DISCONNECTION)){
-                    updateListsNoSort();
-                }
+            if(action.equals(BluetoothDevice.ACTION_BOND_STATE_CHANGED)){
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                int bondState = intent.getIntExtra(BluetoothDevice.EXTRA_BOND_STATE, 0);
+                int previousBondState = intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE, 0);
+                onBondStateChanged(device, bondState, previousBondState);
+            }if(action.equals(IGloveManager.ACTION_BT_CONNECTION) ||
+                    action.equals(IGloveManager.ACTION_BT_DISCONNECTION)){
+                updateListsNoSort();
             }
-        };
+        }
+    };
 
     protected abstract void onBondStateChanged(BluetoothDevice device, int bondState, int previousBondState);
 
@@ -71,8 +72,8 @@ public abstract class GloveListsFragment extends ServiceFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scan, container, false);
 
-        mLeftListView = (ListView) view.findViewById(R.id.insole_left_list);
-        mRightListView = (ListView) view.findViewById(R.id.insole_right_list);
+        mLeftListView = (ListView) view.findViewById(R.id.glove_left_list);
+        mRightListView = (ListView) view.findViewById(R.id.glove_right_list);
         mAdapterLeft = new GloveAdapter(getActivity(), GloveFactory.SIDE_LEFT);
         mAdapterRight = new GloveAdapter(getActivity(), GloveFactory.SIDE_RIGHT);
 
@@ -167,6 +168,7 @@ public abstract class GloveListsFragment extends ServiceFragment {
 
             @Override
             protected void onPostExecute(List<Glove> gloves) {
+                Log.d("gloves", String.valueOf(gloves.size()));
                 for(Glove glove: gloves) adapter.add(glove);
 
                 adapter.setDefaultInsole(PreferenceUtils.getGlove(context, side));
@@ -175,6 +177,9 @@ public abstract class GloveListsFragment extends ServiceFragment {
                 if(getActivity() != null){
                     updateListNoSort(side, adapter);
                 }
+
+                Log.d("adapters", String.valueOf(adapter.getCount()));
+                mRightListView.setAdapter(adapter);
             }
         }.execute();
     }

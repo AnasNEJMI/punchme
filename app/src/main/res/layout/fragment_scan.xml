@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"/>
 
     <ListView
-        android:id="@+id/insole_left_list"
+        android:id="@+id/glove_left_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toLeftOf="@id/strut"
@@ -25,7 +25,7 @@
     </ListView>
 
     <ListView
-        android:id="@+id/insole_right_list"
+        android:id="@+id/glove_right_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/strut"
